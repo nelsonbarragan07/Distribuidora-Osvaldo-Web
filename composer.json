@@ -1,0 +1,32 @@
+{
+    "name": "nelson/distribuidora-osvaldo",
+    "description": "creacion de una tienda online",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nelson Barragan De Hoyos",
+            "email": "nelson@gmail.com"
+        },
+        {
+            "name": "osvaldo rio",
+            "email": "epinares@kawschool.com"
+        },
+        {
+            "name": "camilo barbasa",
+            "email": "epinares@kawschool.com"
+        },
+        {
+            "name": "fray chavez",
+            "email": "epinares@kawschool.com"
+        }
+    ],
+    "require": {
+        
+    },
+    "autoload": {
+        "psr-4": {
+            "distribuidoraOsvaldo\\":"src/"
+        }
+    }
+}
