@@ -1,0 +1,432 @@
+
+/* ----- CONFIGURACIÓN BASE DEL NAVBAR ----- */
+.navbar-default {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    min-height: 70px;
+    margin-bottom: 0;
+    transition: all 0.3s ease;
+}
+
+/* Navbar fijo con efecto de sombra al hacer scroll */
+.navbar-fixed-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+}
+
+.navbar-default.scrolled {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    min-height: 60px;
+}
+
+/* ----- CONTENEDOR ----- */
+.navbar-default .container {
+    position: relative;
+}
+
+/* ----- BRAND/LOGO ----- */
+.navbar-default .navbar-brand {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 800;
+    padding: 22px 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #3498db;
+    transform: scale(1.05);
+    text-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
+}
+
+.navbar-default .navbar-brand strong {
+    font-weight: 900;
+}
+
+/* Efecto de brillo en el brand */
+.navbar-default .navbar-brand::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.navbar-default .navbar-brand:hover::after {
+    left: 100%;
+}
+
+/* ----- MENÚ DE NAVEGACIÓN ----- */
+.navbar-default .navbar-nav {
+    margin-top: 5px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #ecf0f1;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 22px 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Efecto de subrayado animado */
+.navbar-default .navbar-nav > li > a::before {
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.navbar-default .navbar-nav > li > a:hover::before,
+.navbar-default .navbar-nav > li > a:focus::before {
+    width: 80%;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #3498db;
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+/* ----- ÍCONOS EN EL MENÚ ----- */
+.navbar-default .navbar-nav > li > a i {
+    margin-right: 8px;
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.navbar-default .navbar-nav > li > a:hover i {
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* ----- BADGE DEL CARRITO ----- */
+.badge-carrito {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 9px;
+    border-radius: 12px;
+    position: relative;
+    top: -2px;
+    margin-left: 5px;
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.4);
+    animation: pulse-badge 2s ease-in-out infinite;
+}
+
+@keyframes pulse-badge {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* ----- BOTÓN TOGGLE MÓVIL ----- */
+.navbar-default .navbar-toggle {
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    padding: 10px 12px;
+    transition: all 0.3s ease;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #3498db;
+    border-color: #3498db;
+    transform: scale(1.05);
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #ecf0f1;
+    height: 3px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.navbar-default .navbar-toggle:hover .icon-bar {
+    background-color: white;
+}
+
+/* Animación del menú hamburguesa */
+.navbar-toggle.collapsed .icon-bar:nth-child(2) {
+    opacity: 1;
+}
+
+.navbar-toggle .icon-bar:nth-child(1) {
+    transform: rotate(0);
+}
+
+.navbar-toggle .icon-bar:nth-child(3) {
+    transform: rotate(0);
+}
+
+/* ----- MENÚ DESPLEGABLE (MÓVIL) ----- */
+.navbar-collapse {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.navbar-collapse.in,
+.navbar-collapse.collapsing {
+    background: rgba(44, 62, 80, 0.98);
+}
+
+/* ----- ITEMS ACTIVOS ----- */
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #3498db;
+    background-color: rgba(52, 152, 219, 0.15);
+}
+
+.navbar-default .navbar-nav > .active > a::before {
+    width: 80%;
+}
+
+/* ----- DROPDOWN (SI SE NECESITA) ----- */
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #3498db;
+    background-color: rgba(52, 152, 219, 0.15);
+}
+
+.navbar-default .navbar-nav .dropdown-menu {
+    background: #2c3e50;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.navbar-default .navbar-nav .dropdown-menu > li > a {
+    color: #ecf0f1;
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+}
+
+.navbar-default .navbar-nav .dropdown-menu > li > a:hover {
+    background: #3498db;
+    color: white;
+}
+
+/* ----- EFECTOS ESPECIALES ----- */
+/* Efecto de cristal/glassmorphism */
+.navbar-glass {
+    background: rgba(44, 62, 80, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Línea decorativa superior */
+.navbar-default::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #2ecc71, #e74c3c, #f39c12);
+    background-size: 400% 400%;
+    animation: gradient-animation 15s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* ----- RESPONSIVE DESIGN ----- */
+
+/* Tablets */
+@media (max-width: 992px) {
+    .navbar-default .navbar-brand {
+        font-size: 22px;
+        padding: 20px 15px;
+    }
+    
+    .navbar-default .navbar-nav > li > a {
+        font-size: 15px;
+        padding: 20px 15px;
+    }
+}
+
+/* Móvil */
+@media (max-width: 767px) {
+    .navbar-default {
+        min-height: 60px;
+    }
+    
+    .navbar-default .navbar-brand {
+        font-size: 20px;
+        padding: 18px 15px;
+        letter-spacing: 1px;
+    }
+    
+    .navbar-default .navbar-nav {
+        margin-top: 0;
+    }
+    
+    .navbar-default .navbar-nav > li > a {
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .navbar-default .navbar-nav > li > a::before {
+        display: none;
+    }
+    
+    .navbar-default .navbar-nav > li:last-child > a {
+        border-bottom: none;
+    }
+    
+    /* Centrar items en móvil */
+    .navbar-default .navbar-nav > li > a {
+        text-align: center;
+    }
+    
+    /* Badge más pequeño en móvil */
+    .badge-carrito {
+        font-size: 10px;
+        padding: 4px 7px;
+    }
+}
+
+/* Móvil pequeño */
+@media (max-width: 480px) {
+    .navbar-default .navbar-brand {
+        font-size: 16px;
+        padding: 18px 10px;
+    }
+    
+    .navbar-default .navbar-nav > li > a {
+        font-size: 14px;
+        padding: 12px 15px;
+    }
+    
+    .navbar-default .navbar-toggle {
+        margin-top: 13px;
+        margin-right: 10px;
+        padding: 8px 10px;
+    }
+}
+
+/* ----- ANIMACIONES DE ENTRADA ----- */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.navbar-default {
+    animation: slideDown 0.5s ease-out;
+}
+
+/* ----- MODO TRANSPARENTE  ----- */
+.navbar-transparent {
+    background: transparent;
+    box-shadow: none;
+}
+
+.navbar-transparent.scrolled {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* ----- ACCESIBILIDAD ----- */
+.navbar-default .navbar-nav > li > a:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* ----- PRINT ----- */
+@media print {
+    .navbar-default {
+        display: none;
+    }
+}
+
+/* ----- MEJORAS PARA NAVBAR CON LOGO ----- */
+.navbar-brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navbar-brand-logo img {
+    height: 40px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand-logo:hover img {
+    transform: rotate(360deg);
+}
+
+/* ----- BÚSQUEDA EN NAVBAR ----- */
+.navbar-search {
+    position: relative;
+    margin: 15px 10px;
+}
+
+.navbar-search input {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 8px 35px 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.navbar-search input:focus {
+    background: rgba(255,255,255,0.2);
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+}
+
+.navbar-search input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.navbar-search button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}

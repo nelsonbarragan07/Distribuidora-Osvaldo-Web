@@ -1,16 +1,531 @@
-*{
-    padding: 0;
+
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    background-color: aqua;
-}
-
-h1{
+/* ----- HERO SECTION (Después del slider) ----- */
+.nosotros-hero {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    padding: 80px 0;
+    color: white;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
-video{
-    border-radius: 30px;
+.nosotros-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 20% 50%, rgba(52, 152, 219, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(46, 204, 113, 0.1) 0%, transparent 50%);
+}
+
+.nosotros-hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.nosotros-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nosotros-hero .lead {
+    font-size: 1.4rem;
+    font-weight: 300;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* ----- BREADCRUMB ----- */
+.breadcrumb-custom {
+    background: transparent;
+    padding: 15px 0;
+    margin-bottom: 0;
+}
+
+.breadcrumb-custom a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.breadcrumb-custom a:hover {
+    color: white;
+}
+
+.breadcrumb-custom span {
+    color: white;
+    font-weight: 600;
+}
+
+/* ----- SECCIÓN DE MISIÓN Y VISIÓN ----- */
+.mision-vision {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.mision-vision-card {
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.mision-vision-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(180deg, #3498db, #2ecc71);
+    transition: width 0.4s ease;
+}
+
+.mision-vision-card:hover::before {
+    width: 100%;
+    opacity: 0.05;
+}
+
+.mision-vision-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(52, 152, 219, 0.2);
+}
+
+.mision-vision-card .icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #3498db, #2ecc71);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    font-size: 40px;
+    color: white;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+.mision-vision-card h2 {
+    color: #2c3e50;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.mision-vision-card h5 {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    font-weight: 400;
+}
+
+/* ----- SECCIÓN DE VALORES ----- */
+.valores-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    border-radius: 2px;
+}
+
+.section-title p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 20px auto 0;
+}
+
+.valor-item {
+    text-align: center;
+    padding: 30px 20px;
+    transition: all 0.3s ease;
+}
+
+.valor-item:hover {
+    transform: translateY(-5px);
+}
+
+.valor-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #3498db 0%, #2ecc71 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 45px;
+    color: white;
+    box-shadow: 0 5px 20px rgba(52, 152, 219, 0.3);
+    transition: all 0.3s ease;
+}
+
+.valor-item:hover .valor-icon {
+    transform: rotate(360deg) scale(1.1);
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.5);
+}
+
+.valor-item h4 {
+    color: #2c3e50;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.valor-item p {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ----- SECCIÓN DE CONTACTO/INFO ----- */
+.info-contacto {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+}
+
+.info-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.info-box:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px);
+}
+
+.info-box .icon {
+    font-size: 50px;
+    color: #3498db;
+    margin-bottom: 20px;
+}
+
+.info-box h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.info-box p {
+    font-size: 1.1rem;
+    margin: 0;
+    line-height: 1.8;
+}
+
+.info-box a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.info-box a:hover {
+    color: #2ecc71;
+}
+
+/* ----- GALERÍA DE TARJETAS MULTIMEDIA ----- */
+.multimedia-section {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.card-multimedia {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-multimedia:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(52, 152, 219, 0.2);
+}
+
+.card-multimedia figure {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    height: 250px;
+}
+
+.card-multimedia figure::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(46, 204, 113, 0.3));
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1;
+}
+
+.card-multimedia:hover figure::before {
+    opacity: 1;
+}
+
+.card-multimedia figure img,
+.card-multimedia figure video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card-multimedia:hover figure img,
+.card-multimedia:hover figure video {
+    transform: scale(1.1);
+}
+
+.card-multimedia .contenido-card {
+    padding: 30px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-multimedia .contenido-card h3 {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.card-multimedia .contenido-card h4 {
+    color: #3498db;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.card-multimedia .contenido-card p {
+    color: #7f8c8d;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.card-multimedia .contenido-card .btn {
+    align-self: flex-start;
+}
+
+/* Botones de redes sociales */
+.social-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-facebook {
+    background: linear-gradient(135deg, #3b5998, #2d4373);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-facebook:hover {
+    background: linear-gradient(135deg, #2d4373, #1e2b4f);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(59, 89, 152, 0.4);
+    color: white;
+}
+
+.btn-instagram {
+    background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-instagram:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(188, 24, 136, 0.4);
+    color: white;
+}
+
+/* ----- ESTADÍSTICAS  ----- */
+.estadisticas-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #3498db 0%, #2ecc71 100%);
+    color: white;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ----- RESPONSIVE ----- */
+@media (max-width: 991px) {
+    .nosotros-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .nosotros-hero .lead {
+        font-size: 1.2rem;
+    }
+
+    .mision-vision-card {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nosotros-hero {
+        padding: 50px 0;
+    }
+
+    .nosotros-hero h1 {
+        font-size: 2rem;
+    }
+
+    .nosotros-hero .lead {
+        font-size: 1rem;
+    }
+
+    .mision-vision,
+    .valores-section,
+    .info-contacto,
+    .multimedia-section {
+        padding: 50px 0;
+    }
+
+    .section-title h2 {
+        font-size: 2rem;
+    }
+
+    .mision-vision-card {
+        padding: 30px;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+
+    .social-buttons {
+        flex-direction: column;
+    }
+
+    .social-buttons .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .nosotros-hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .section-title h2 {
+        font-size: 1.5rem;
+    }
+
+    .valor-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 35px;
+    }
+
+    .info-box {
+        padding: 25px;
+    }
+}
+
+/* ----- ANIMACIONES ----- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* ----- ACCESIBILIDAD ----- */
+.mision-vision-card:focus-within,
+.card-multimedia:focus-within,
+.info-box:focus-within {
+    outline: 3px solid #3498db;
+    outline-offset: 3px;
 }

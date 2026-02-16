@@ -1,0 +1,39 @@
+ /* RESPONSIVE */
+    @media (max-width: 768px) {
+        .carousel, .d-item, .d-img {
+            height: 400px;
+            margin-top: 60px;
+        }
+        
+        .carousel-caption {
+            bottom: 5%;
+            padding: 20px;
+        }
+        
+        .carousel-caption h1 {
+            font-size: 28px;
+        }
+        
+        .carousel-caption p {
+            font-size: 16px;
+        }
+        
+        .navbar-default .navbar-brand {
+            font-size: 20px;
+            padding: 18px 15px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .carousel, .d-item, .d-img {
+            height: 300px;
+        }
+        
+        .carousel-caption h1 {
+            font-size: 20px;
+        }
+        
+        .carousel-caption p {
+            display: none;
+        }
+    }

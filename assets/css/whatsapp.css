@@ -1,51 +1,204 @@
-.orden{
-    position:fixed;
-    bottom: 20px;
-    right: 20px;
+
+.orden {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
 }
 
-.btn-whatsapp{
-    position: relative;
-}
-
-.btn-whatsapp::before,
-.btn-whatsapp::after{
-    content: "";
-    position: absolute;
-    top: -15px;
-    left: 4px;
-    width: 50px;
-    height: 50px;
+.btn-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
     border-radius: 50%;
-    background-color: #29A71A;
-    opacity: 0;
-    animation: onda 1.7s infinite;
-}
-
-.btn-whatsapp::before{
-    animation-delay: 1s;
-}
-
-.btn-whatsapp::after{
-    animation-delay: 1.3s;
-}
-
-.btn-whatsapp img{
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
     position: relative;
-    z-index: 2;
+    overflow: hidden;
 }
 
-@keyframes onda {
-    0% {
-        transform: scale(1);
-    }
+.btn-whatsapp::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
-    15% {
-        opacity: 1;
-    }
+.btn-whatsapp:hover::before {
+    opacity: 1;
+}
 
+.btn-whatsapp img {
+    width: 40px;
+    height: 40px;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+}
+
+.btn-whatsapp:hover img {
+    transform: scale(1.1);
+}
+
+/* ----- ANIMACIÓN DE PULSO ----- */
+@keyframes pulse-whatsapp {
+
+    0%,
     100% {
-        opacity: 0;
-        transform: scale(2.5);
+        transform: scale(1);
+        box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
     }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+    }
+}
+
+.btn-whatsapp {
+    animation: pulse-whatsapp 2s ease-in-out infinite;
+}
+
+.btn-whatsapp:hover {
+    animation: none;
+}
+
+/* ----- TOOLTIP  ----- */
+.btn-whatsapp::after {
+    content: '¿Necesitas ayuda?';
+    position: absolute;
+    right: 80px;
+    background: #2c3e50;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateX(10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-whatsapp:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Flecha del tooltip */
+.btn-whatsapp::before {
+    content: '';
+    position: absolute;
+    right: 70px;
+    border: 8px solid transparent;
+    border-left-color: #2c3e50;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.btn-whatsapp:hover::before {
+    opacity: 1;
+}
+
+/* ----- BADGE DE NOTIFICACIÓN  ----- */
+.whatsapp-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #e74c3c;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ----- RESPONSIVE ----- */
+@media (max-width: 768px) {
+    .orden {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .btn-whatsapp {
+        width: 60px;
+        height: 60px;
+    }
+
+    .btn-whatsapp img {
+        width: 35px;
+        height: 35px;
+    }
+
+    /* Ocultar tooltip en móviles */
+    .btn-whatsapp::after,
+    .btn-whatsapp::before {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .orden {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .btn-whatsapp {
+        width: 55px;
+        height: 55px;
+    }
+
+    .btn-whatsapp img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* ----- ANIMACIÓN DE ENTRADA ----- */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-whatsapp {
+    animation: slideInUp 0.6s ease-out, pulse-whatsapp 2s ease-in-out 1s infinite;
 }

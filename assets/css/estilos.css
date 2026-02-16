@@ -1,38 +1,222 @@
-.panel-title{
-	font-size: 14px;
-	text-align: center;
-	font-weight: bold;
-}
-#main{
-        margin-top: 100px;
+
+
+/* ----- LAYOUT PRINCIPAL ----- */
+#main {
+    margin-top: 80px;
+    padding: 20px 0;
 }
 
-.u-size-100{
-	width: 100px;
-	text-align: center;
+/* ----- TÍTULOS ----- */
+.titulo-pelicula {
+    font-size: 28px;
+    margin: 30px 0;
+    font-weight: bold;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.main-form{
-	max-width: 500px;
-	margin: 0 auto;
+.panel-title {
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+    color: #2c3e50;
 }
 
-.panel-info>.panel-heading{
-	color: #ffffff;
-    background-color: #e95420;
-}
-.main-login{
-	max-width: 300px;
-	margin: 0 auto;
-}
-
-.footer{
-	margin-top: 100px;
-  
+/* ----- FORMULARIOS ----- */
+.main-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.titulo-pelicula{
-	font-size: 15px;
-	margin: 0;
-	font-weight: bold;
+.main-login {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.main-login img {
+    display: block;
+    margin: 0 auto 20px;
+}
+
+/* ----- INPUTS Y CONTROLES ----- */
+.u-size-100 {
+    width: 100px;
+    text-align: center;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+}
+
+/* ----- PANELES Y TARJETAS ----- */
+.panel {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.panel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.panel-heading {
+    background-color: #3498db !important;
+    color: white !important;
+    border-radius: 10px 10px 0 0 !important;
+    padding: 15px;
+    font-weight: bold;
+}
+
+.panel-info > .panel-heading {
+    background-color: #3498db !important;
+}
+
+.panel-body {
+    padding: 20px;
+}
+
+.panel-footer {
+    background-color: #f8f9fa;
+    border-top: none;
+    padding: 15px;
+}
+
+/* ----- BOTONES ----- */
+.btn {
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+}
+
+.btn-success {
+    background-color: #27ae60;
+    border-color: #27ae60;
+}
+
+.btn-success:hover {
+    background-color: #229954;
+    border-color: #229954;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+    border-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/* ----- TABLAS ----- */
+.table {
+    background: white;
+}
+
+.table-bordered {
+    border: 1px solid #ddd;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.table > thead > tr > th {
+    background-color: #34495e;
+    color: white;
+    font-weight: 600;
+    border: none;
+}
+
+/* ----- FOOTER ----- */
+.footer {
+    margin-top: 100px;
+}
+
+/* ----- UTILIDADES ----- */
+.text-center {
+    text-align: center;
+}
+
+.hidden-print {
+    display: inline-block;
+}
+
+@media print {
+    .hidden-print {
+        display: none !important;
+    }
+}
+
+/* ----- RESPONSIVE ----- */
+@media (max-width: 768px) {
+    #main {
+        margin-top: 70px;
+        padding: 10px;
+    }
+    
+    .main-form,
+    .main-login {
+        max-width: 100%;
+        margin: 20px;
+    }
+    
+    .titulo-pelicula {
+        font-size: 20px;
+    }
+    
+    .table {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo-pelicula {
+        font-size: 18px;
+    }
+    
+    .btn {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
 }
