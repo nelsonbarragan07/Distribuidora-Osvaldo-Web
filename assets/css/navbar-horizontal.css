@@ -1,0 +1,268 @@
+
+/* ----- RESET ----- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ----- NAVBAR BASE ----- */
+#mainNavbar {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 1030;
+}
+
+/* Efecto al hacer scroll */
+#mainNavbar.scrolled {
+    padding: 10px 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* ----- LÍNEA DECORATIVA SUPERIOR ----- */
+.navbar-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #2ecc71, #e74c3c, #f39c12, #9b59b6);
+    background-size: 400% 400%;
+    animation: gradient-move 15s ease infinite;
+}
+
+@keyframes gradient-move {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* ----- LOGO/BRAND ----- */
+.navbar-brand h2 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin: 0;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover h2 {
+    color: #3498db;
+    transform: scale(1.05);
+}
+
+/* ----- MENÚ DE NAVEGACIÓN ----- */
+.navbar-nav {
+    gap: 5px;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: #ecf0f1 !important;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 12px 20px !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link i {
+    font-size: 18px;
+}
+
+/* Hover effect */
+.nav-link:hover {
+    background: rgba(52, 152, 219, 0.2);
+    color: #3498db !important;
+    transform: translateY(-2px);
+}
+
+/* Link activo */
+.nav-item.active .nav-link {
+    background: rgba(52, 152, 219, 0.3);
+    color: #3498db !important;
+    border-bottom: 3px solid #3498db;
+}
+
+/* ----- BADGE DEL CARRITO ----- */
+.nav-link .badge {
+    font-size: 10px;
+    padding: 4px 7px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* ----- WHATSAPP LINK ----- */
+.nav-link.text-success:hover {
+    background: rgba(37, 211, 102, 0.2) !important;
+    color: #25D366 !important;
+}
+
+/* ----- BARRA DE PROGRESO ----- */
+.scroll-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    width: 0;
+    transition: width 0.1s ease;
+    z-index: 10;
+}
+
+/* ----- BOTÓN TOGGLE MÓVIL ----- */
+.navbar-toggler {
+    border: 2px solid #3498db;
+    padding: 8px 12px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ----- RESPONSIVE ----- */
+
+/* Desktop grande */
+@media (min-width: 1200px) {
+    .container-fluid {
+        padding: 0 50px;
+    }
+}
+
+/* Tablet y móvil */
+@media (max-width: 991px) {
+    .navbar-brand h2 {
+        font-size: 1.2rem;
+    }
+    
+    .navbar-collapse {
+        background: rgba(44, 62, 80, 0.98);
+        padding: 20px;
+        margin-top: 15px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    
+    .navbar-nav {
+        gap: 10px;
+    }
+    
+    .nav-link {
+        padding: 15px 20px !important;
+        border-radius: 8px;
+        border-left: 3px solid transparent;
+    }
+    
+    .nav-item.active .nav-link {
+        border-left: 3px solid #3498db;
+        border-bottom: none;
+    }
+    
+    .nav-link .badge {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin-left: 10px;
+    }
+}
+
+/* Móvil pequeño */
+@media (max-width: 576px) {
+    .navbar-brand h2 {
+        font-size: 1rem;
+    }
+    
+    .nav-link {
+        font-size: 13px;
+        padding: 12px 15px !important;
+    }
+    
+    .nav-link i {
+        font-size: 16px;
+    }
+}
+
+/* ----- FIX PARA BODY ----- */
+body {
+    padding-top: 80px; /* Altura del navbar */
+}
+
+/* ----- ANIMACIONES ----- */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#mainNavbar {
+    animation: slideDown 0.5s ease-out;
+}
+
+/* ----- ACCESIBILIDAD ----- */
+.nav-link:focus {
+    outline: 3px solid #3498db;
+    outline-offset: 3px;
+}
+
+/* ----- MEJORAS VISUALES ----- */
+.navbar-brand {
+    position: relative;
+    overflow: hidden;
+}
+
+.navbar-brand::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.navbar-brand:hover::after {
+    left: 100%;
+}
+
+/* Separador entre links (desktop) */
+@media (min-width: 992px) {
+    .nav-item:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        right: -3px;
+        top: 25%;
+        height: 50%;
+        width: 1px;
+        background: linear-gradient(180deg, transparent, rgba(52, 152, 219, 0.5), transparent);
+    }
+}

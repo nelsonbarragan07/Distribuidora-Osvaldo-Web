@@ -1,3 +1,7 @@
+/* ===================================
+   FOOTER COMPLETO - DISTRIBUIDORA OSVALDO
+   =================================== */
+
 /* ----- FOOTER PRINCIPAL ----- */
 footer {
     background: linear-gradient(135deg, #1a252f 0%, #2c3e50 50%, #34495e 100%);
@@ -305,7 +309,7 @@ footer .container {
     background: #1DA1F2;
 }
 
-/* ----- NEWSLETTER ----- */
+/* ----- NEWSLETTER (OPCIONAL) ----- */
 .footer-newsletter {
     background: rgba(52, 152, 219, 0.1);
     padding: 30px;
