@@ -24,6 +24,19 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     }
 }
 
+// DATOS DE EMPRESA CON RESPALDO
+$empresa = array(
+    'nombre' => 'Distribuidora Osvaldo',
+    'descripcion' => 'Somos una empresa dedicada a la distribución de bebidas de calidad en Coveñas y sus alrededores.',
+    'telefono' => '+57 312 810 3173',
+    'email' => 'info@distribuidoraosvaldo.com',
+    'direccion' => 'Coveñas, Sucre, Colombia',
+    'horario' => 'Lunes a Sábado: 8:00 AM - 8:00 PM',
+    'facebook' => 'https://www.facebook.com/distribuidoraosvaldocovenas',
+    'instagram' => 'https://instagram.com/distribuidora_osvaldo',
+    'whatsapp' => '573128103173'
+);
+
 // Intentar obtener datos de la BD
 try {
     require_once('conexion.php');
@@ -32,14 +45,16 @@ try {
 
     if ($res && mysqli_num_rows($res) > 0) {
         $reg = mysqli_fetch_assoc($res);
-        foreach ($empresa as $key => $value) {
-            if (isset($reg[$key]) && !empty($reg[$key])) {
-                $empresa[$key] = $reg[$key];
+        // Actualizar solo los campos que existen en la BD
+        foreach ($reg as $key => $value) {
+            if (isset($empresa[$key]) && !empty($value)) {
+                $empresa[$key] = $value;
             }
         }
     }
 } catch (Exception $e) {
-    // Usar datos de respaldo
+    // Si hay error, usar datos de respaldo
+    error_log("Error al conectar con BD: " . $e->getMessage());
 }
 
 // Detectar página actual para navbar
@@ -63,7 +78,7 @@ function isActive($page)
     <title>Carrito de Compras - Distribuidora Osvaldo</title>
     <link rel="icon" href="logoOsvaldo.jpg">
 
-    <!-- Bootstrap 5 -->
+    <!-- Bootstrap 5 (SOLO UNO) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap Icons -->
@@ -135,7 +150,7 @@ function isActive($page)
                     </li>
 
                     <li class="nav-item whatsapp-link">
-                        <a class="nav-link text-success" href="https://wa.me/573128103173" target="_blank">
+                        <a class="nav-link text-success" href="https://wa.me/<?php echo $empresa['whatsapp']; ?>" target="_blank">
                             <i class="bi bi-whatsapp"></i>
                             WHATSAPP
                         </a>
@@ -308,10 +323,11 @@ function isActive($page)
     </div>
 
     <!-- BOTÓN WHATSAPP FLOTANTE -->
-    <a href="https://wa.me/573128103173" class="btn-whatsapp" target="_blank" rel="noopener">
+    <a href="https://wa.me/<?php echo $empresa['whatsapp']; ?>" class="btn-whatsapp" target="_blank" rel="noopener">
         <img src="whatsapp.png" alt="WhatsApp" height="60" width="60">
-        <span class="whatsapp-tooltip">¿Listo para pedir?</span>
+        <span class="whatsapp-tooltip">¿Necesitas ayuda?</span>
     </a>
+
     <!-- FOOTER -->
     <footer id="contacto">
         <div class="container">
@@ -319,25 +335,25 @@ function isActive($page)
             <div class="row footer-benefits">
                 <div class="col-xs-6 col-sm-3 icon-footer">
                     <div class="icon-footer-image">
-                        <img src="envios.png" alt="Envíos" height="45">
+                        <img src="envios.png" alt="Envíos" height="45" loading="lazy">
                     </div>
                     <p><strong>Envíos Gratis</strong><br>Por $100.000 de compra</p>
                 </div>
                 <div class="col-xs-6 col-sm-3 icon-footer">
                     <div class="icon-footer-image">
-                        <img src="devolucion.png" alt="Devoluciones" height="45">
+                        <img src="devolucion.png" alt="Devoluciones" height="45" loading="lazy">
                     </div>
                     <p><strong>Devoluciones Gratis</strong><br>Tienes 10 días</p>
                 </div>
                 <div class="col-xs-6 col-sm-3 icon-footer">
                     <div class="icon-footer-image">
-                        <img src="atencion.png" alt="Atención" height="45">
+                        <img src="atencion.png" alt="Atención" height="45" loading="lazy">
                     </div>
                     <p><strong>Atención al Cliente</strong><br>7 días a la semana</p>
                 </div>
                 <div class="col-xs-6 col-sm-3 icon-footer">
                     <div class="icon-footer-image">
-                        <img src="seguro.png" alt="Pago" height="45">
+                        <img src="seguro.png" alt="Pago" height="45" loading="lazy">
                     </div>
                     <p><strong>Pago Seguro</strong><br>100% confiable</p>
                 </div>
@@ -347,18 +363,18 @@ function isActive($page)
             <div class="row footer-info">
                 <div class="col-md-4 footer-section">
                     <h4>Sobre Nosotros</h4>
-                    <p><?php echo $empresa['descripcion']; ?></p>
+                    <p><?php echo htmlspecialchars($empresa['descripcion']); ?></p>
 
                     <div class="footer-social">
                         <h4>Síguenos</h4>
                         <div class="social-links">
-                            <a href="<?php echo $empresa['facebook']; ?>" class="social-link facebook" target="_blank">
+                            <a href="<?php echo htmlspecialchars($empresa['facebook']); ?>" class="social-link facebook" target="_blank" rel="noopener">
                                 <i class="bi bi-facebook"></i>
                             </a>
-                            <a href="<?php echo $empresa['instagram']; ?>" class="social-link instagram" target="_blank">
+                            <a href="<?php echo htmlspecialchars($empresa['instagram']); ?>" class="social-link instagram" target="_blank" rel="noopener">
                                 <i class="bi bi-instagram"></i>
                             </a>
-                            <a href="https://wa.me/<?php echo $empresa['whatsapp']; ?>" class="social-link whatsapp" target="_blank">
+                            <a href="https://wa.me/<?php echo $empresa['whatsapp']; ?>" class="social-link whatsapp" target="_blank" rel="noopener">
                                 <i class="bi bi-whatsapp"></i>
                             </a>
                         </div>
@@ -371,7 +387,7 @@ function isActive($page)
                         <li><a href="index.php">Inicio</a></li>
                         <li><a href="nosotros.php">Nosotros</a></li>
                         <li><a href="carrito.php">Carrito</a></li>
-                        <li><a href="#main">Productos</a></li>
+                        <li><a href="index.php#main">Productos</a></li>
                     </ul>
                 </div>
 
@@ -379,19 +395,19 @@ function isActive($page)
                     <h4>Contacto</h4>
                     <div class="footer-contact-item">
                         <i class="bi bi-geo-alt-fill"></i>
-                        <span><?php echo $empresa['direccion']; ?></span>
+                        <span><?php echo htmlspecialchars($empresa['direccion']); ?></span>
                     </div>
                     <div class="footer-contact-item">
                         <i class="bi bi-telephone-fill"></i>
-                        <a href="tel:<?php echo $empresa['telefono']; ?>"><?php echo $empresa['telefono']; ?></a>
+                        <a href="tel:<?php echo $empresa['telefono']; ?>"><?php echo htmlspecialchars($empresa['telefono']); ?></a>
                     </div>
                     <div class="footer-contact-item">
                         <i class="bi bi-envelope-fill"></i>
-                        <a href="mailto:<?php echo $empresa['email']; ?>"><?php echo $empresa['email']; ?></a>
+                        <a href="mailto:<?php echo $empresa['email']; ?>"><?php echo htmlspecialchars($empresa['email']); ?></a>
                     </div>
                     <div class="footer-contact-item">
                         <i class="bi bi-clock-fill"></i>
-                        <span><?php echo $empresa['horario']; ?></span>
+                        <span><?php echo htmlspecialchars($empresa['horario']); ?></span>
                     </div>
                 </div>
             </div>
@@ -415,17 +431,9 @@ function isActive($page)
         </div>
     </footer>
 
-
-    <!-- SCRIPTS -->
+    <!-- SCRIPTS (OPTIMIZADOS - SIN DUPLICADOS) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- JavaScript -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/slider.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-
 
     <script>
         $(document).ready(function() {
@@ -445,25 +453,14 @@ function isActive($page)
                 $('#scrollProgress').css('width', scrollPercent + '%');
             });
 
-            // Confirmación de eliminación mejorada
-            $('.btn-eliminar').on('click', function(e) {
-                if (!confirm('¿Estás seguro de eliminar este producto del carrito?')) {
-                    e.preventDefault();
-                }
-            });
-
             // Validación de cantidad
             $('.cantidad-input').on('change', function() {
                 const val = parseInt($(this).val());
-                if (val < 1) {
-                    $(this).val(1);
-                }
-                if (val > 99) {
-                    $(this).val(99);
-                }
+                if (val < 1) $(this).val(1);
+                if (val > 99) $(this).val(99);
             });
 
-            // Auto-actualizar al cambiar cantidad (opcional)
+            // Auto-actualizar al cambiar cantidad
             $('.cantidad-input').on('blur', function() {
                 const form = $(this).closest('form');
                 const cantidad = parseInt($(this).val());
@@ -479,6 +476,18 @@ function isActive($page)
             // Guardar cantidad original
             $('.cantidad-input').each(function() {
                 $(this).data('original', $(this).val());
+            });
+
+            // Smooth scroll
+            $('a[href^="#"]').on('click', function(e) {
+                const target = $(this.attr('href'));
+                if (target.length) {
+                    e.preventDefault();
+                    $('html, body').animate({
+                        scrollTop: target.offset().top - 80
+                    }, 800);
+                    $('.navbar-collapse').collapse('hide');
+                }
             });
         });
     </script>
