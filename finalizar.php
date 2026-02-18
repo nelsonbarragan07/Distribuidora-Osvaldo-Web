@@ -29,17 +29,20 @@ try {
             }
         }
     }
-} catch (Exception $e) {}
+} catch (Exception $e) {
+}
 
 // Detectar página actual
 $current_page = basename($_SERVER['PHP_SELF']);
-function isActive($page) {
+function isActive($page)
+{
     global $current_page;
     return ($current_page == $page) ? 'active' : '';
 }
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,7 +55,7 @@ function isActive($page) {
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
@@ -129,7 +132,7 @@ function isActive($page) {
 
     <!-- CONTENIDO PRINCIPAL -->
     <div class="container" id="main">
-        
+
         <!-- HEADER -->
         <div class="finalizar-header">
             <h1>
@@ -157,7 +160,7 @@ function isActive($page) {
 
         <!-- LAYOUT PRINCIPAL -->
         <div class="checkout-layout">
-            
+
             <!-- FORMULARIO -->
             <div class="form-section">
                 <h3>
@@ -166,33 +169,33 @@ function isActive($page) {
                 </h3>
 
                 <form action="completar_pedido.php" method="POST" id="checkoutForm">
-                    
+
                     <!-- Campo oculto para teléfono sin formato -->
                     <input type="hidden" name="telefono" id="telefono_hidden">
-                    
+
                     <!-- Nombre y Apellidos -->
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Nombre <span class="required">*</span></label>
-                                <input type="text" 
-                                       class="form-control" 
-                                       name="nombre" 
-                                       id="nombre"
-                                       placeholder="Ej: Juan"
-                                       required>
+                                <input type="text"
+                                    class="form-control"
+                                    name="nombre"
+                                    id="nombre"
+                                    placeholder="Ej: Juan"
+                                    required>
                                 <div class="error-message">Por favor ingresa tu nombre</div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Apellidos <span class="required">*</span></label>
-                                <input type="text" 
-                                       class="form-control" 
-                                       name="apellidos" 
-                                       id="apellidos"
-                                       placeholder="Ej: Pérez"
-                                       required>
+                                <input type="text"
+                                    class="form-control"
+                                    name="apellidos"
+                                    id="apellidos"
+                                    placeholder="Ej: Pérez"
+                                    required>
                                 <div class="error-message">Por favor ingresa tus apellidos</div>
                             </div>
                         </div>
@@ -203,24 +206,24 @@ function isActive($page) {
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Correo Electrónico <span class="required">*</span></label>
-                                <input type="email" 
-                                       class="form-control" 
-                                       name="email" 
-                                       id="email"
-                                       placeholder="ejemplo@email.com"
-                                       required>
+                                <input type="email"
+                                    class="form-control"
+                                    name="email"
+                                    id="email"
+                                    placeholder="ejemplo@email.com"
+                                    required>
                                 <div class="error-message">Por favor ingresa un email válido</div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Teléfono / WhatsApp <span class="required">*</span></label>
-                                <input type="text" 
-                                       class="form-control" 
-                                       id="telefono_display"
-                                       placeholder="312 345 6789"
-                                       required
-                                       maxlength="12">
+                                <input type="text"
+                                    class="form-control"
+                                    id="telefono_display"
+                                    placeholder="312 345 6789"
+                                    required
+                                    maxlength="12">
                                 <div class="error-message">Por favor ingresa un teléfono válido (10 dígitos)</div>
                             </div>
                         </div>
@@ -229,12 +232,12 @@ function isActive($page) {
                     <!-- Dirección -->
                     <div class="form-group">
                         <label>Dirección de Entrega <span class="required">*</span></label>
-                        <input type="text" 
-                               class="form-control" 
-                               name="direccion" 
-                               id="direccion"
-                               placeholder="Calle, Número, Barrio"
-                               required>
+                        <input type="text"
+                            class="form-control"
+                            name="direccion"
+                            id="direccion"
+                            placeholder="Calle, Número, Barrio"
+                            required>
                         <div class="error-message">Por favor ingresa tu dirección</div>
                     </div>
 
@@ -243,21 +246,22 @@ function isActive($page) {
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label>Ciudad</label>
-                                <input type="text" 
-                                       class="form-control" 
-                                       name="ciudad" 
-                                       id="ciudad"
-                                       placeholder="Coveñas"
-                                       value="Coveñas">
+                                <input type="text"
+                                    class="form-control"
+                                    name="ciudad"
+                                    id="ciudad"
+                                    placeholder="Coveñas"
+                                    required>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Código Postal</label>
-                                <input type="text" 
-                                       class="form-control" 
-                                       name="codigo_postal" 
-                                       placeholder="700001">
+                                <input type="text"
+                                    class="form-control"
+                                    name="codigo_postal"
+                                    placeholder="700001"
+                                    required>
                             </div>
                         </div>
                     </div>
@@ -293,10 +297,10 @@ function isActive($page) {
                     <!-- Comentarios -->
                     <div class="form-group">
                         <label>Comentarios Adicionales (Opcional)</label>
-                        <textarea name="comentario" 
-                                  class="form-control" 
-                                  rows="4"
-                                  placeholder="Instrucciones de entrega, referencias, etc."></textarea>
+                        <textarea name="comentario"
+                            class="form-control"
+                            rows="4"
+                            placeholder="Instrucciones de entrega, referencias, etc."></textarea>
                     </div>
 
                     <!-- Botones -->
@@ -434,147 +438,146 @@ function isActive($page) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-    $(document).ready(function() {
-        // Navbar scroll
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > 50) {
-                $('#mainNavbar').addClass('scrolled');
-            } else {
-                $('#mainNavbar').removeClass('scrolled');
-            }
-            
-            const scrollTop = $(window).scrollTop();
-            const docHeight = $(document).height();
-            const winHeight = $(window).height();
-            const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
-            $('#scrollProgress').css('width', scrollPercent + '%');
-        });
-
-        // Métodos de pago
-        $('.payment-method').click(function() {
-            $('.payment-method').removeClass('selected');
-            $(this).addClass('selected');
-            $(this).find('input[type="radio"]').prop('checked', true);
-        });
-
-        // ===================================
-        // FORMATEO DE TELÉFONO (CORREGIDO)
-        // ===================================
-        $('#telefono_display').on('input', function() {
-            // Remover todo excepto números
-            let value = $(this).val().replace(/\D/g, '');
-            
-            // Limitar a 10 dígitos
-            if (value.length > 10) {
-                value = value.substring(0, 10);
-            }
-            
-            // Formatear con espacios
-            let formatted = value;
-            if (value.length >= 6) {
-                formatted = value.substring(0, 3) + ' ' + value.substring(3, 6) + ' ' + value.substring(6);
-            } else if (value.length >= 3) {
-                formatted = value.substring(0, 3) + ' ' + value.substring(3);
-            }
-            
-            // Mostrar en el campo
-            $(this).val(formatted);
-            
-            // Guardar sin formato en campo oculto
-            $('#telefono_hidden').val(value);
-        });
-
-        // Validación del formulario
-        $('#checkoutForm').submit(function(e) {
-            e.preventDefault(); // Prevenir envío por defecto
-            
-            let valid = true;
-            
-            // Limpiar errores previos
-            $('.form-control').removeClass('error success');
-            
-            // Validar nombre
-            if ($('#nombre').val().trim() === '') {
-                $('#nombre').addClass('error');
-                valid = false;
-            } else {
-                $('#nombre').addClass('success');
-            }
-            
-            // Validar apellidos
-            if ($('#apellidos').val().trim() === '') {
-                $('#apellidos').addClass('error');
-                valid = false;
-            } else {
-                $('#apellidos').addClass('success');
-            }
-            
-            // Validar email
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test($('#email').val())) {
-                $('#email').addClass('error');
-                valid = false;
-            } else {
-                $('#email').addClass('success');
-            }
-            
-            // Validar teléfono (del campo oculto sin formato)
-            const telefono = $('#telefono_hidden').val();
-            if (telefono.length !== 10) {
-                $('#telefono_display').addClass('error');
-                valid = false;
-            } else {
-                $('#telefono_display').addClass('success');
-            }
-            
-            // Validar dirección
-            if ($('#direccion').val().trim() === '') {
-                $('#direccion').addClass('error');
-                valid = false;
-            } else {
-                $('#direccion').addClass('success');
-            }
-            
-            if (!valid) {
-                // Scroll al primer error
-                $('html, body').animate({
-                    scrollTop: $('.form-control.error').first().offset().top - 100
-                }, 500);
-            } else {
-                // Todo válido, enviar formulario
-                $('.btn-finalizar').addClass('loading');
-                this.submit(); // Enviar el formulario
-            }
-        });
-
-        // Validación en tiempo real
-        $('.form-control').on('blur', function() {
-            const $this = $(this);
-            const value = $this.val().trim();
-            
-            if ($this.attr('id') === 'telefono_display') {
-                // Validación especial para teléfono
-                const telefono = $('#telefono_hidden').val();
-                if (telefono.length === 10) {
-                    $this.removeClass('error').addClass('success');
-                } else if (value !== '') {
-                    $this.removeClass('success').addClass('error');
+        $(document).ready(function() {
+            // Navbar scroll
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 50) {
+                    $('#mainNavbar').addClass('scrolled');
+                } else {
+                    $('#mainNavbar').removeClass('scrolled');
                 }
-            } else if (value !== '') {
-                if ($this.attr('type') === 'email') {
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (emailRegex.test(value)) {
+
+                const scrollTop = $(window).scrollTop();
+                const docHeight = $(document).height();
+                const winHeight = $(window).height();
+                const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
+                $('#scrollProgress').css('width', scrollPercent + '%');
+            });
+
+            // Métodos de pago
+            $('.payment-method').click(function() {
+                $('.payment-method').removeClass('selected');
+                $(this).addClass('selected');
+                $(this).find('input[type="radio"]').prop('checked', true);
+            });
+
+            // FORMATEO DE TELÉFONO (CORREGIDO
+            $('#telefono_display').on('input', function() {
+                // Remover todo excepto números
+                let value = $(this).val().replace(/\D/g, '');
+
+                // Limitar a 10 dígitos
+                if (value.length > 10) {
+                    value = value.substring(0, 10);
+                }
+
+                // Formatear con espacios
+                let formatted = value;
+                if (value.length >= 6) {
+                    formatted = value.substring(0, 3) + ' ' + value.substring(3, 6) + ' ' + value.substring(6);
+                } else if (value.length >= 3) {
+                    formatted = value.substring(0, 3) + ' ' + value.substring(3);
+                }
+
+                // Mostrar en el campo
+                $(this).val(formatted);
+
+                // Guardar sin formato en campo oculto
+                $('#telefono_hidden').val(value);
+            });
+
+            // Validación del formulario
+            $('#checkoutForm').submit(function(e) {
+                e.preventDefault(); // Prevenir envío por defecto
+
+                let valid = true;
+
+                // Limpiar errores previos
+                $('.form-control').removeClass('error success');
+
+                // Validar nombre
+                if ($('#nombre').val().trim() === '') {
+                    $('#nombre').addClass('error');
+                    valid = false;
+                } else {
+                    $('#nombre').addClass('success');
+                }
+
+                // Validar apellidos
+                if ($('#apellidos').val().trim() === '') {
+                    $('#apellidos').addClass('error');
+                    valid = false;
+                } else {
+                    $('#apellidos').addClass('success');
+                }
+
+                // Validar email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test($('#email').val())) {
+                    $('#email').addClass('error');
+                    valid = false;
+                } else {
+                    $('#email').addClass('success');
+                }
+
+                // Validar teléfono (del campo oculto sin formato)
+                const telefono = $('#telefono_hidden').val();
+                if (telefono.length !== 10) {
+                    $('#telefono_display').addClass('error');
+                    valid = false;
+                } else {
+                    $('#telefono_display').addClass('success');
+                }
+
+                // Validar dirección
+                if ($('#direccion').val().trim() === '') {
+                    $('#direccion').addClass('error');
+                    valid = false;
+                } else {
+                    $('#direccion').addClass('success');
+                }
+
+                if (!valid) {
+                    // Scroll al primer error
+                    $('html, body').animate({
+                        scrollTop: $('.form-control.error').first().offset().top - 100
+                    }, 500);
+                } else {
+                    // Todo válido, enviar formulario
+                    $('.btn-finalizar').addClass('loading');
+                    this.submit(); // Enviar el formulario
+                }
+            });
+
+            // Validación en tiempo real
+            $('.form-control').on('blur', function() {
+                const $this = $(this);
+                const value = $this.val().trim();
+
+                if ($this.attr('id') === 'telefono_display') {
+                    // Validación especial para teléfono
+                    const telefono = $('#telefono_hidden').val();
+                    if (telefono.length === 10) {
                         $this.removeClass('error').addClass('success');
-                    } else {
+                    } else if (value !== '') {
                         $this.removeClass('success').addClass('error');
                     }
-                } else {
-                    $this.removeClass('error').addClass('success');
+                } else if (value !== '') {
+                    if ($this.attr('type') === 'email') {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (emailRegex.test(value)) {
+                            $this.removeClass('error').addClass('success');
+                        } else {
+                            $this.removeClass('success').addClass('error');
+                        }
+                    } else {
+                        $this.removeClass('error').addClass('success');
+                    }
                 }
-            }
+            });
         });
-    });
     </script>
 
 </body>
+
 </html>
